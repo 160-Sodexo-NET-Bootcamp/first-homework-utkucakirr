@@ -93,7 +93,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //Listede bulunan bir kitabı silme
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var temp = Books.Where(x => x.Id == id).FirstOrDefault();
