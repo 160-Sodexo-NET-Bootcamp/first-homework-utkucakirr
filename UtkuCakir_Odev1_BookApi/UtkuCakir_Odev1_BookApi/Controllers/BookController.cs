@@ -16,7 +16,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         public int SayfaSayisi { get; set; }
     }
 
-    [Route("api/[controller]")]
+    [Route("api/[controller]s")]
     [ApiController]
     public class BookController : ControllerBase
     {
@@ -35,14 +35,14 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //Listedeki tüm kitapları listeleme
-        [HttpPost("getall")]
+        [HttpPost]
         public IActionResult GetAll()
         {
             return Ok(Books);
         }
 
         //FromQuery kullanarak kitap detayları sorgulama
-        [HttpGet("getbyid")]
+        [HttpGet]
         public IActionResult GetById([FromQuery] int id)
         {
             var book = Books.Where(x => x.Id == id).FirstOrDefault();
@@ -55,7 +55,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //FromRoute kullanarak kitap detayları sorgulama
-        [HttpGet("getbyid2")]
+        [HttpGet("{id}")]
         public IActionResult GetById2([FromRoute] int id)
         {
             var book = Books.Where(x => x.Id == id).FirstOrDefault();
@@ -76,7 +76,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //Listede bulunan bir kitabı güncelleme
-        [HttpPut("update")]
+        [HttpPut]
         public IActionResult Update(Book book)
         {
             var temp = Books.Where(x => x.Id == book.Id).FirstOrDefault();
@@ -93,7 +93,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //Listede bulunan bir kitabı silme
-        [HttpDelete("delete")]
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
             var temp = Books.Where(x => x.Id == id).FirstOrDefault();
