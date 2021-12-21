@@ -76,10 +76,10 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
         }
 
         //Listede bulunan bir kitabı güncelleme
-        [HttpPut]
-        public IActionResult Update(Book book)
+        [HttpPut("{id}")]
+        public IActionResult Update([FromRoute]int id, Book book)
         {
-            var temp = Books.Where(x => x.Id == book.Id).FirstOrDefault();
+            var temp = Books.Where(x => x.Id == id).FirstOrDefault();
             if (temp == null)
             {
                 return NotFound();
