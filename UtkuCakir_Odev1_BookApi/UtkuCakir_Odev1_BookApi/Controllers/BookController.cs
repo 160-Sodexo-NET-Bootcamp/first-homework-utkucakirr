@@ -24,6 +24,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
 
         public BookController()
         {
+            //Kitap Listesine kayıtlar eklendi.
             Books = new List<Book>();
             Books.Add(new Book { Id = 1, KitapAdi = "Kitap1", SayfaSayisi = 300, SeriNo = 123, Yazar = "Yazar1"});
             Books.Add(new Book { Id = 2, KitapAdi = "Kitap2", SayfaSayisi = 123, SeriNo = 124, Yazar = "Yazar2" });
@@ -33,12 +34,14 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
             Books.Add(new Book { Id = 6, KitapAdi = "Kitap6", SayfaSayisi = 255, SeriNo = 125, Yazar = "Yazar6" });
         }
 
+        //Listedeki tüm kitapları listeleme
         [HttpPost("getall")]
         public IActionResult GetAll()
         {
             return Ok(Books);
         }
 
+        //FromQuery kullanarak kitap detayları sorgulama
         [HttpGet("getbyid")]
         public IActionResult GetById([FromQuery] int id)
         {
@@ -51,6 +54,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
             return Ok(book);
         }
 
+        //FromRoute kullanarak kitap detayları sorgulama
         [HttpGet("getbyid2")]
         public IActionResult GetById2([FromRoute] int id)
         {
@@ -63,6 +67,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
             return Ok(book);
         }
 
+        //Listeye kitap ekleme
         [HttpPost("add")]
         public IActionResult Add([FromBody] Book book)
         {
@@ -70,6 +75,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
             return Ok(Books);
         }
 
+        //Listede bulunan bir kitabı güncelleme
         [HttpPut("update")]
         public IActionResult Update(Book book)
         {
@@ -86,6 +92,7 @@ namespace UtkuCakir_Odev1_BookApi.Controllers
             return Ok(Books);
         }
 
+        //Listede bulunan bir kitabı silme
         [HttpDelete("delete")]
         public IActionResult Delete(int id)
         {
